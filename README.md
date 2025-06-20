@@ -6,6 +6,7 @@ Incluye backend en Django + DRF, frontend en Next.js, base de datos PostgreSQL y
 ---
 
 ## Tabla de Contenidos
+
 - [Características](#características)
 - [Requisitos](#requisitos)
 - [Instalación y ejecución](#instalación-y-ejecución)
@@ -21,6 +22,7 @@ Incluye backend en Django + DRF, frontend en Next.js, base de datos PostgreSQL y
 ---
 
 ## Características
+
 - Autenticación JWT (registro/login)
 - Gestión de campañas, beneficiarios y tareas
 - Permisos por rol (admin/beneficiary)
@@ -33,6 +35,7 @@ Incluye backend en Django + DRF, frontend en Next.js, base de datos PostgreSQL y
 ---
 
 ## Requisitos
+
 - Docker y Docker Compose
 - (Opcional) Node.js y Python 3.11+ si deseas correr localmente sin Docker
 
@@ -41,24 +44,30 @@ Incluye backend en Django + DRF, frontend en Next.js, base de datos PostgreSQL y
 ## Instalación y ejecución
 
 1. **Clona el repositorio:**
+
    ```sh
    git clone https://github.com/tu_usuario/donations-manager.git
    cd donations-manager
    ```
 
 2. **Configura las variables de entorno:**
+
    - Copia los archivos `.env.example` a `.env` en los directorios `backend/` y `frontend/` y completa los valores necesarios (ver sección [Variables de entorno](#variables-de-entorno)).
 
 3. **Levanta todos los servicios con Docker Compose:**
+
    ```sh
    docker compose up --build
    ```
+
    Esto iniciará:
+
    - Backend: http://localhost:8000
    - Frontend: http://localhost:3000
    - Base de datos PostgreSQL
 
 4. **Accede a la documentación de la API:**
+
    - http://localhost:8000/swagger/
 
 5. **Accede al panel de administración de Django:**
@@ -69,6 +78,7 @@ Incluye backend en Django + DRF, frontend en Next.js, base de datos PostgreSQL y
 ## Variables de entorno
 
 ### Backend (`backend/.env`)
+
 ```
 DEBUG=1
 SECRET_KEY=tu_clave_secreta
@@ -85,6 +95,7 @@ EMAIL_USE_TLS=True
 ```
 
 ### Frontend (`frontend/.env`)
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:8000/api/
 ```

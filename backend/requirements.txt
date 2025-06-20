@@ -4,3 +4,4 @@ djangorestframework
 djangorestframework-simplejwt
 python-dotenv
 drf-yasg
+django-cors-headers

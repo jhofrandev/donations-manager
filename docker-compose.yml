@@ -17,11 +17,15 @@ services:
   backend:
     build: ./backend
     container_name: donations_backend
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-    volumes:
-      - ./backend:/app
+    command: sh -c "/wait-for-postgres.sh db echo 'Postgres listo' && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     env_file:
       - ./backend/.env
+    environment:
+      DATABASE_NAME: donations
+      DATABASE_USER: donations_user
+      DATABASE_PASSWORD: donations_pass
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
     ports:
       - "8000:8000"
     depends_on:
@@ -30,8 +34,6 @@ services:
   frontend:
     build: ./frontend
     container_name: donations_frontend
-    volumes:
-      - ./frontend:/app
     env_file:
       - ./frontend/.env
     ports:

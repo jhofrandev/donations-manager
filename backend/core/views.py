@@ -8,7 +8,8 @@ from .models import Campaign, Beneficiary, Task, Role
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db import transaction
-from .serializers import RegisterSerializer, CampaignSerializer, BeneficiarySerializer, TaskSerializer
+from .serializers import RegisterSerializer, CampaignSerializer, BeneficiarySerializer, TaskSerializer, EmailTokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 # Create your views here.
 
@@ -110,3 +111,7 @@ class TaskViewSet(viewsets.ModelViewSet):
                     )
                 except Exception as e:
                     raise Exception('Error enviando correo al beneficiario. La actualización no fue guardada.')
+
+class EmailTokenObtainPairView(TokenObtainPairView):
+    serializer_class = EmailTokenObtainPairSerializer
+    permission_classes = (AllowAny,)
